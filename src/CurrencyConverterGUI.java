@@ -1,3 +1,6 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,5 +23,13 @@ public class CurrencyConverterGUI extends JFrame{
 	JPanel panel = new JPanel();
 	JPanel panelBTN = new JPanel();
 	
-	
+	public CurrencyConverterGUI() {
+		
+		// Set up the frame
+		this.setSize(400,250);
+		this.setLayout(new BorderLayout());
+		
+		
+		
+	}
 }
