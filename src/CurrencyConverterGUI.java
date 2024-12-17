@@ -37,7 +37,12 @@ public class CurrencyConverterGUI extends JFrame{
 		panel.add(exchangeRateL);
 		panel.add(textFieldExchangeRate);
 		
+		panelBTN.add(btnCalculate);
+		panelBTN.add(btnDelete);
 		
+		// Add panels to the frame
+		this.add(panel, BorderLayout.CENTER);
+		this.add(panelBTN, BorderLayout.SOUTH);
 		
 	}
 }
