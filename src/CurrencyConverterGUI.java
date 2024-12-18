@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -7,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class CurrencyConverterGUI extends JFrame{
+public class CurrencyConverterGUI extends JFrame {
 	
 	JButton btnCalculate = new JButton("Calculate");
 	JButton btnDelete = new JButton("Delete");
@@ -44,5 +46,26 @@ public class CurrencyConverterGUI extends JFrame{
 		this.add(panel, BorderLayout.CENTER);
 		this.add(panelBTN, BorderLayout.SOUTH);
 		
+		btnCalculate.addActionListener(new CalculateButton());
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		
 	}
+	
+	class CalculateButton implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(textFieldUSD.getText().equals("")) {
+				textFieldUSD.setText("" + Float.parseFloat(textFieldEURO.getText()) / Float.parseFloat(textFieldExchangeRate.getText()));
+			}
+			else {
+				textFieldEURO.setText("" + Float.parseFloat(textFieldUSD.getText()) * Float.parseFloat(textFieldExchangeRate.getText()));
+			}
+		}
+	}
+	
+	
 }
