@@ -47,6 +47,7 @@ public class CurrencyConverterGUI extends JFrame {
 		this.add(panelBTN, BorderLayout.SOUTH);
 		
 		btnCalculate.addActionListener(new CalculateButton());
+		btnDelete.addActionListener(new DeleteButton());
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -67,5 +68,12 @@ public class CurrencyConverterGUI extends JFrame {
 		}
 	}
 	
-	
+	class DeleteButton implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {	
+			textFieldEURO.setText("");
+			textFieldUSD.setText("");
+		}
+	}
 }
