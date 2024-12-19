@@ -60,11 +60,11 @@ public class CurrencyConverterGUI extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 
 			if (textFieldUSD.getText().equals("")) {
-				textFieldUSD.setText("" + Float.parseFloat(textFieldEURO.getText())
+				textFieldUSD.setText("$" + Float.parseFloat(textFieldEURO.getText())
 						/ Float.parseFloat(textFieldExchangeRate.getText()));
 			} else {
 				textFieldEURO.setText(""
-						+ Float.parseFloat(textFieldUSD.getText()) * Float.parseFloat(textFieldExchangeRate.getText()));
+						+ Float.parseFloat(textFieldUSD.getText()) * Float.parseFloat(textFieldExchangeRate.getText()) + "€");
 			}
 		}
 	}
