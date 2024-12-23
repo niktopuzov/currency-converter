@@ -35,12 +35,29 @@ public class CurrencyConverterGUI extends JFrame {
 
 		panel.setLayout(new GridLayout(4, 2));
 		
+		panel.add(amountLabel);
+		panel.add(textFieldAmount);
+		panel.add(new JLabel("From Currency"));
+		panel.add(comboBoxFromCurrency);
+		panel.add(new JLabel("To Currency"));
+		panel.add(comboBoxToCurrency);
+		panel.add(convertedAmountLabel);
+		panel.add(textFieldConvertAmount);
+		
 		panelBTN.add(btnCalculate);
 		panelBTN.add(btnDelete);
 
 		// Add panels to the frame
 		this.add(panel, BorderLayout.CENTER);
 		this.add(panelBTN, BorderLayout.SOUTH);
+		
+		comboBoxFromCurrency.addItem("Euro (EUR)");
+		comboBoxFromCurrency.addItem("US Dollar (USD)");
+		comboBoxFromCurrency.addItem("Bulgarian Lev (BGN)");
+		
+		comboBoxToCurrency.addItem("Euro (EUR)");
+		comboBoxToCurrency.addItem("US Dollar (USD)");
+		comboBoxToCurrency.addItem("Bulgarian Lev (BGN)");
 
 		btnCalculate.addActionListener(new CalculateButton());
 		btnDelete.addActionListener(new DeleteButton());
