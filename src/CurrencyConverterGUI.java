@@ -33,16 +33,8 @@ public class CurrencyConverterGUI extends JFrame {
 		this.setSize(400, 250);
 		this.setLayout(new BorderLayout());
 
-		/*
-		panel.setLayout(new GridLayout(3, 2));
-		panel.add(euroL);
-		panel.add(textFieldEURO);
-		panel.add(usdL);
-		panel.add(textFieldUSD);
-		panel.add(exchangeRateL);
-		panel.add(textFieldExchangeRate);
-		*/
-
+		panel.setLayout(new GridLayout(4, 2));
+		
 		panelBTN.add(btnCalculate);
 		panelBTN.add(btnDelete);
 
