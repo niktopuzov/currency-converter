@@ -17,10 +17,10 @@ public class CurrencyConverterGUI extends JFrame {
 
 	JTextField textFieldAmount = new JTextField();
 	JTextField textFieldConvertAmount = new JTextField();
-	
+
 	JLabel amountLabel = new JLabel("Amount");
 	JLabel convertedAmountLabel = new JLabel("Converted Amount");
-	
+
 	JComboBox<String> comboBoxFromCurrency = new JComboBox<String>();
 	JComboBox<String> comboBoxToCurrency = new JComboBox<String>();
 
@@ -34,7 +34,7 @@ public class CurrencyConverterGUI extends JFrame {
 		this.setLayout(new BorderLayout());
 
 		panel.setLayout(new GridLayout(4, 2));
-		
+
 		panel.add(amountLabel);
 		panel.add(textFieldAmount);
 		panel.add(new JLabel("From Currency"));
@@ -43,18 +43,18 @@ public class CurrencyConverterGUI extends JFrame {
 		panel.add(comboBoxToCurrency);
 		panel.add(convertedAmountLabel);
 		panel.add(textFieldConvertAmount);
-		
+
 		panelBTN.add(btnCalculate);
 		panelBTN.add(btnDelete);
 
 		// Add panels to the frame
 		this.add(panel, BorderLayout.CENTER);
 		this.add(panelBTN, BorderLayout.SOUTH);
-		
+
 		comboBoxFromCurrency.addItem("Euro (EUR)");
 		comboBoxFromCurrency.addItem("US Dollar (USD)");
 		comboBoxFromCurrency.addItem("Bulgarian Lev (BGN)");
-		
+
 		comboBoxToCurrency.addItem("Euro (EUR)");
 		comboBoxToCurrency.addItem("US Dollar (USD)");
 		comboBoxToCurrency.addItem("Bulgarian Lev (BGN)");
@@ -73,26 +73,46 @@ public class CurrencyConverterGUI extends JFrame {
 
 			String fromCurrency = (String) comboBoxFromCurrency.getSelectedItem();
 			String toCurrency = (String) comboBoxToCurrency.getSelectedItem();
-			
+
 			float amount = 0f;
-			
+
 			try {
 				amount = Float.parseFloat(textFieldAmount.getText());
 			} catch (NumberFormatException ex) {
 				textFieldConvertAmount.setText("Invalid Input");
 				return;
 			}
-			
-			
+
+			// calculation logic
+
+			// show the result
 		}
 	}
 
 	class DeleteButton implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// textFieldEURO.setText("");
-			// textFieldUSD.setText("");
+			textFieldAmount.setText("");
+			textFieldConvertAmount.setText("");
 		}
+	}
+
+	private float getExchangeRate(String fromCurrency, String toCurrency) {
+
+		if (fromCurrency.equals("Euro (EUR)") && toCurrency.equals("US Dollar (USD)")) {
+			return 1.05f;
+		} else if (fromCurrency.equals("US Dollar (USD)") && toCurrency.equals("Euro (EUR)")) {
+			return 0.95f;
+		} else if (fromCurrency.equals("Euro (EUR)") && toCurrency.equals("Bulgarian Lev (BGN)")) {
+			return 1.95f;
+		} else if (fromCurrency.equals("Bulgarian Lev (BGN)") && toCurrency.equals("Euro (EUR)")) {
+			return 0.5f;
+		} else if (fromCurrency.equals("US Dollar (USD)") && toCurrency.equals("Bulgarian Lev (BGN)")) {
+			return 1.85f;
+		} else if (fromCurrency.equals("Bulgarian Lev (BGN)") && toCurrency.equals("US Dollar (USD)")) {
+			return 0.55f;
+		}
+		
+		return 1.0f;
 	}
 }
