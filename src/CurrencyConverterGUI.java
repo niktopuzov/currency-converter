@@ -37,9 +37,9 @@ public class CurrencyConverterGUI extends JFrame {
 
 		panel.add(amountLabel);
 		panel.add(textFieldAmount);
-		panel.add(new JLabel("From Currency"));
+		panel.add(new JLabel("From"));
 		panel.add(comboBoxFromCurrency);
-		panel.add(new JLabel("To Currency"));
+		panel.add(new JLabel("To"));
 		panel.add(comboBoxToCurrency);
 		panel.add(convertedAmountLabel);
 		panel.add(textFieldConvertAmount);
@@ -83,9 +83,10 @@ public class CurrencyConverterGUI extends JFrame {
 				return;
 			}
 
-			// calculation logic
+			float exchangeRate = getExchangeRate(fromCurrency, toCurrency);
+			float convertedAmount = amount * exchangeRate;
 
-			// show the result
+			textFieldConvertAmount.setText(String.format("%.2f", convertedAmount));
 		}
 	}
 
