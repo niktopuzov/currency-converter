@@ -68,17 +68,22 @@ public class CurrencyConverterGUI extends JFrame {
 	}
 
 	class CalculateButton implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			if (textFieldUSD.getText().equals("")) {
-				textFieldUSD.setText("$" + String.format("%.2f",
-						Float.parseFloat(textFieldEURO.getText()) / Float.parseFloat(textFieldExchangeRate.getText())));
-			} else {
-				textFieldEURO.setText("" + String.format("%.2f",
-						Float.parseFloat(textFieldUSD.getText()) * Float.parseFloat(textFieldExchangeRate.getText())) + "€");
+			String fromCurrency = (String) comboBoxFromCurrency.getSelectedItem();
+			String toCurrency = (String) comboBoxToCurrency.getSelectedItem();
+			
+			float amount = 0f;
+			
+			try {
+				amount = Float.parseFloat(textFieldAmount.getText());
+			} catch (NumberFormatException ex) {
+				textFieldConvertAmount.setText("Invalid Input");
+				return;
 			}
+			
+			
 		}
 	}
 
@@ -86,8 +91,8 @@ public class CurrencyConverterGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			textFieldEURO.setText("");
-			textFieldUSD.setText("");
+			// textFieldEURO.setText("");
+			// textFieldUSD.setText("");
 		}
 	}
 }
