@@ -114,6 +114,7 @@ public class CurrencyConverterGUI extends JFrame {
 			return 0.55f;
 		}
 		
+		// Default
 		return 1.0f;
 	}
 }
