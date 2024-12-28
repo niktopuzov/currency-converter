@@ -58,10 +58,14 @@ public class CurrencyConverterGUI extends JFrame {
 		comboBoxToCurrency.addItem("Euro (EUR)");
 		comboBoxToCurrency.addItem("US Dollar (USD)");
 		comboBoxToCurrency.addItem("Bulgarian Lev (BGN)");
+		
+		comboBoxFromCurrency.setSelectedItem("Bulgarian Lev (BGN)");
+		comboBoxToCurrency.setSelectedItem("Euro (EUR)");
 
 		btnCalculate.addActionListener(new CalculateButton());
 		btnDelete.addActionListener(new DeleteButton());
 
+		this.setTitle("Currency Converter");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 
